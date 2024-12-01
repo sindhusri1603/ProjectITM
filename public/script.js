@@ -107,6 +107,7 @@ function handleSubmit(event) {
     });
 }
 
+
 // Event listener for the form submission
 document.getElementById('dataForm').addEventListener('submit', handleSubmit);
 
