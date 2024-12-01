@@ -1,4 +1,4 @@
-let city = "";
+var city = "";
 
 function getLoc() {
     navigator.geolocation.getCurrentPosition(
@@ -23,6 +23,7 @@ function getLoc() {
 }
 
 function handleSubmit(event) {
+    alert(city);
     event.preventDefault(); // Prevent the form from submitting the default way
 
     // Collecting data from the form
