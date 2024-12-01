@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Info</title>
+</head>
+<body>
+    <div>
+        <p id="locationDisplay"></p> <!-- To display the location -->
+        <button class="getl" onclick="getLoc()">Get Location</button>
+        <form id="dataForm" onsubmit="handleSubmit(event)"> <!-- Pass event to prevent default behavior -->
+            <input type="text" placeholder="Name" id="name" required />
+            <input type="email" placeholder="Email" id="email" required />
+            <select id="className" required>
+                <option value="" disabled selected>Select Subject Name</option>
+                <option value="Class A">IT 501(A) Advanced Programming Techniques</option>
+                <option value="Class B">IT 502(A) Modern Database Systems and Applications</option>
+                <option value="Class C">IT 503(A) Data Communication and Networking</option>
+                <option value="Class D">IT 504(A) IT Infrastructure Management</option>
+                <option value="Class D">IT 593(A): Machine Learning Tools and Techniques</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

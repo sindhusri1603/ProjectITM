@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.0/qrious.min.js"></script>
+    <style>
+        #qrcode {
+            margin: 20px auto;
+            width: 256px;
+            height: 256px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>QR Code for www.google.com</h1>
+
+<canvas id="qrcode"></canvas>
+
+<script>
+    // Create a new QRious instance
+    var qr = new QRious({
+        element: document.getElementById('qrcode'),
+        value: 'https://www.google.com', // URL to encode
+        size: 256 // Size of the QR code
+    });
+</script>
+
+</body>
+</html>
