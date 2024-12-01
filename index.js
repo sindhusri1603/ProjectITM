@@ -40,7 +40,7 @@ app.post('/api/submit', async (req, res) => {
     const { name, email, className, location } = req.body;
     const newForm = new Form({ name, email, className, location });
 console.log(location)
-    if(location.trim()=="St. Albert" || location.trim()=="Bengaluru"{
+    if(location.trim()=="St. Albert" || location.trim()=="Bengaluru"){
         try {
             await newForm.save(); // Save to the database
             res.json({ message: 'Data successfully submitted!' });
