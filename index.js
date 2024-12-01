@@ -8,6 +8,7 @@ const path = require('path');
 const app = express();
 const port = 5000;
 
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
@@ -39,7 +40,7 @@ app.post('/api/submit', async (req, res) => {
     const { name, email, className, location } = req.body;
     const newForm = new Form({ name, email, className, location });
 console.log(location)
-    if(location=="St. Albert" || location=="Bengaluru"){
+    if(location=="St. Albert"){
         try {
             await newForm.save(); // Save to the database
             res.json({ message: 'Data successfully submitted!' });
