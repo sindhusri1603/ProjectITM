@@ -4,26 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Your Info</title>
+    <link rel="stylesheet" href="style.css"> <!-- Linking the CSS file -->
 </head>
-
 <body>
-    <div>
-        <p id="locationDisplay"></p> <!-- To display the location -->
-        <button class="getl" onclick="getLoc()">Get Location</button>
-        <form id="dataForm" onsubmit="handleSubmit(event)"> <!-- Pass event to prevent default behavior -->
-            <input type="text" placeholder="Name" id="name" required />
-            <input type="email" placeholder="Email" id="email" required />
-            <select id="className" required>
-                <option value="" disabled selected>Select Subject Name</option>
+    <div class="container">
+        <p id="locationDisplay" class="location"></p> <!-- To display the location -->
+        <button class="get-location-btn" onclick="getLoc()">Get Location</button>
+        <form id="dataForm" class="form" onsubmit="handleSubmit(event)"> <!-- Pass event to prevent default behavior -->
+            <input type="text" class="input-field" placeholder="Name" id="name" required />
+            <input type="text" class="input-field" placeholder="StudentID" id="ID" required />
+            <input type="email" class="input-field" placeholder="Email" id="email" required />
+            <select id="className" class="dropdown" required>
+                <option value="" disabled selected placeholder="Select Subject Name" id="Select Subject Name" required>Select Subject Name</option>
                 <option value="Class A">IT 501(A) Advanced Programming Techniques</option>
                 <option value="Class B">IT 502(A) Modern Database Systems and Applications</option>
                 <option value="Class C">IT 503(A) Data Communication and Networking</option>
                 <option value="Class D">IT 504(A) IT Infrastructure Management</option>
-                <option value="Class D">IT 593(A): Machine Learning Tools and Techniques</option>
+                <option value="Class E">IT 593(A) Machine Learning Tools and Techniques</option>
             </select>
-            <button type="submit">Submit</button>
+            <input type="submit" class="submit-btn" value="Submit"/>
         </form>
-        <p id="message"></p>
+        <p id="message" class="message"></p>
     </div>
 
     <script src="script.js"></script>
