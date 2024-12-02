@@ -40,13 +40,14 @@ app.post('/api/submit', async (req, res) => {
     const { name, email, className, location } = req.body;
     const newForm = new Form({ name, email, className, location });
 console.log(location)
-    if(location.trim()=="St. Albert" || location.trim()=="Bengaluru"){
+
+    if(location.trim()=="St. Albert" || location.trim()=="Bengaluru"||location.trim()=="Mulshi"){
         try {
             await newForm.save(); // Save to the database
             res.json({ message: 'Data successfully submitted!' });
         } catch (error) {
             console.error('Error saving to MongoDB:', error);
-            res.status(500).json({ message: 'Error saving data.' });
+            res.status(500).json({ message: error });
         }
     }
 });
