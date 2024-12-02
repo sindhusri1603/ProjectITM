@@ -37,24 +37,24 @@ app.get('/', (req, res) => {
 });
 // API endpoint to handle form submission
 app.post('/api/submit', async (req, res) => {
-    const { name, email, className, location } = req.body;
-    const newForm = new Form({ name, email, className, location });
-console.log(location)
+    const { Name, Email, ClassName, location } = req.body;
 
-    if(location.trim()=="St. Albert" || location.trim()=="Bengaluru"||location.trim()=="Mulshi"){
-        try {
-            await newForm.save(); // Save to the database
-            res.json({ message: 'Data successfully submitted!' });
-        } catch (error) {
-            console.error('Error saving to MongoDB:', error);
-            res.status(500).json({ message: error });
+    try {
+        const existingEntry = await Form.findOne({ Email, ClassName });
+        if (existingEntry) {
+            return res.status(400).json({ message: 'Attendance already marked!' });
         }
+
+        if (location.trim() === "St. Albert" || location.trim() === "Edmonton") {
+            const newForm = new Form({ Name, Email, ClassName, location });
+            await newForm.save();
+            res.json({ message: 'Data successfully submitted!' });
+        } else {
+            res.status(400).json({ message: 'Location not allowed!' });
+        }
+    } catch (error) {
+        console.error('Error saving to MongoDB:', error);
+        res.status(500).json({ message: 'Server Error' });
     }
 });
-app.get('/qr', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'qr.html'));
-});
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+
