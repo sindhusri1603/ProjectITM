@@ -32,7 +32,7 @@ function handleSubmit(event) {
     const className = document.getElementById('className').value;
 
     // Proceed with form submission to server
-    fetch('http://localhost:5000/api/submit', {
+    fetch('https://qr-attendance-bz2n.onrender.com/api/submit', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -51,13 +51,10 @@ function handleSubmit(event) {
     })
     .catch(error => {
         console.error('Error submitting form:', error);
-        document.getElementById('message').innerText = 'Error: try in college campus'; // Display error messages
+        document.getElementById('message').innerHTML = JSON.stringify(error.message); // Display error messages
     });
 }
 
 
 // Event listener for the form submission
 document.getElementById('dataForm').addEventListener('submit', handleSubmit);
-
-// Call getLoc() to fetch the location when the script runs
-
