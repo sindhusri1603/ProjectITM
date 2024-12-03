@@ -1,60 +1,89 @@
-var city = "";
-function getLoc() {
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            // Properly close the backticks and quotes in the fetch URL
-            fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`)
-                .then(res => res.json()) // Correctly close the .then function
+
+
+const classroomCoords = { lat: 53.5236, lon: -113.5263 };  // Classroom coordinates
+        const allowedRadius = 75;  // Allowed radius in meters
+
+        function getLoc() {
+            if (!navigator.geolocation) {
+                document.getElementById('locationDisplay').innerText = "Geolocation is not supported by your browser.";
+                return;
+            }
+
+            document.getElementById('locationDisplay').innerText = "Fetching your location...";
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const userLat = position.coords.latitude;
+                    const userLon = position.coords.longitude;
+                    const distance = calculateDistance(classroomCoords.lat, classroomCoords.lon, userLat, userLon);
+
+                    if (distance <= allowedRadius) {
+                        document.getElementById('locationDisplay').innerText = `Location: Within allowed area (${Math.round(distance)} meters away)`;
+                        document.getElementById('message').innerText = "";
+                    } else {
+                        document.getElementById('locationDisplay').innerText = `Location: Outside allowed area (${Math.round(distance)} meters away)`;
+                        document.getElementById('message').innerText = "You must be within the classroom area (75 meters) to mark attendance.";
+                    }
+                },
+                (error) => {
+                    document.getElementById('locationDisplay').innerText = "Unable to fetch location.";
+                    console.error("Error getting geolocation: ", error);
+                }
+            );
+        }
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371;  // Radius of the Earth in km
+            const dLat = deg2rad(lat2 - lat1);
+            const dLon = deg2rad(lon2 - lon1);
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c * 1000;  // Convert to meters
+        }
+
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const Name = document.getElementById('name').value;
+            const Email = document.getElementById('email').value;
+            const ClassName = document.getElementById('className').value;
+
+            if (document.getElementById('message').innerText === "") {
+                fetch('http://localhost:5000/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ Name, Email, ClassName }),
+                })
+                .then(response => response.json())
                 .then(data => {
-                    console.log(data);
-                    city = data.city || "Unknown"; // Safely capture the city name
-                    document.getElementById('locationDisplay').innerText = `Location: ${city}`; // Display the location
+                    document.getElementById('message').innerText = data.message;
                 })
                 .catch(error => {
-                    console.error("Error fetching location: ", error);
+                    console.error('Error submitting form:', error);
+                    document.getElementById('message').innerText = "Submission failed. Please try again later.";
                 });
-        },
-        (error) => {
-            console.error("Error getting geolocation: ", error);
-            document.getElementById('locationDisplay').innerText = "Unable to fetch location.";
+            } else {
+                document.getElementById('message').innerText = "You are outside the allowed area. Please return to the classroom.";
+            }
         }
-    );
-}
 
-function handleSubmit(event) {
-    alert(city);
-    event.preventDefault(); // Prevent the form from submitting the default way
+        // QR Code generation
+        const qr = new QRious({
+            element: document.getElementById('qrcode'),
+            value: 'http://localhost:5000/form',
+            size: 256
+        });
 
-    // // Collecting data from the form
-    const Name = document.getElementById('Name').value;
-    const Email = document.getElementById('Email').value;
-    const ClassName = document.getElementById('ClassName').value;
+        document.getElementById('dataForm').addEventListener('submit', handleSubmit);
 
-    // Proceed with form submission to server
-    fetch('https://projectitm.onrender.com', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ Name, Email, ClassName, location: city }), // Sending location as city
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        document.getElementById('message').innerText = data.message; // Display success message
-        window.location.href = "success.html"; // Redirect to success page
-    })
-    .catch(error => {
-        console.error('Error submitting form:', error);
-        document.getElementById('message').innerHTML = JSON.stringify(error.message); // Display error messages
-    });
-}
-// Event listener for the form submission
-document.getElementById('dataForm').addEventListener('submit', handleSubmit);
-
-
-
+        // Fetch location on page load
+        getLoc();
+ 
