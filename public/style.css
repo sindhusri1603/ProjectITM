@@ -1,31 +1,54 @@
-/*
+/* General Reset */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #a7a7d1;
-    color: #333;
+    background: linear-gradient(135deg, #802dd8, #2e7afd);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
-/* Container Styling 
+.qr-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#qrcode {
+    margin: 20px auto;
+    width: 256px;
+    height: 256px;
+}
+
+h1 {
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+/* Container Styling */
 .container {
     width: 90%;
     max-width: 500px;
     margin: 50px auto;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* Location Display
+/* Location Display */
 .location {
     font-size: 1.1em;
     margin-bottom: 10px;
     color: #555;
 }
 
-/* Button Styling 
+/* Button Styling */
 .get-location-btn {
     background-color: #007bff;
     color: #fff;
@@ -39,17 +62,17 @@ body {
 }
 
 .get-location-btn:hover {
-    background-color: #0056b3;
+    background-color: #2d9838;
 }
 
-/* Form Styling 
+/* Form Styling */
 .form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Input Fields 
+/* Input Fields */
 .input-field, .dropdown, .submit-btn {
     width: 100%;
     padding: 10px;
@@ -63,16 +86,16 @@ body {
     outline: none;
 }
 
-/* Dropdown 
+/* Dropdown */
 .dropdown {
     appearance: none;
     background-color: #fff;
     cursor: pointer;
 }
 
-/* Submit Button 
+/* Submit Button */
 .submit-btn {
-    background-color: #28a745;
+    background-color: #3665dd;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -83,72 +106,27 @@ body {
     background-color: #218838;
 }
 
-/* Message Styling 
+/* Message Styling */
 .message {
     margin-top: 20px;
     font-size: 1em;
     color: #28a745;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        background: linear-gradient(135deg, #6a11cb, #2575fc); /* Adjust gradient for smaller screens */
+    }
 
-/* General Reset */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #74ebd5, #9face6);
-    color: #333;
-    text-align: center;
-}
+    .container {
+        width: 95%; /* Adjust width for smaller screens */
+        margin: 20px auto;
+        padding: 15px;
+    }
 
-/* Container Styling */
-.container, .qr-container {
-    max-width: 500px;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Title */
-h1 {
-    color: #4a4a8a;
-    margin-bottom: 20px;
-}
-
-/* Button Styling */
-.get-location-btn, .submit-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-}
-
-.get-location-btn:hover, .submit-btn:hover {
-    background-color: #218838;
-}
-
-/* Input and Dropdown Styling */
-.input-field, .dropdown {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Message Styling */
-.message {
-    color: #218838;
-    font-size: 1.2em;
-}
-
-/* QR Code Styling */
-canvas {
-    margin-top: 20px;
+    .get-location-btn, .input-field, .dropdown, .submit-btn {
+        font-size: 0.9em; /* Adjust font size for smaller screens */
+        padding: 8px;
+    }
 }
