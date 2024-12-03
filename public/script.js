@@ -47,32 +47,35 @@ const classroomCoords = { lat: 53.5603964, lon: -113.4455089 };  // Classroom co
         }
 
         function handleSubmit(event) {
-            event.preventDefault();
+    event.preventDefault();
 
-            const Name = document.getElementById('name').value;
-            const Email = document.getElementById('email').value;
-            const ClassName = document.getElementById('className').value;
+    const Name = document.getElementById('name').value;
+    const Email = document.getElementById('email').value;
+    const ClassName = document.getElementById('className').value;
+    const location = document.getElementById('locationDisplay').innerText; // Fetch location displayed on the page
 
-            if (document.getElementById('message').innerText === "") {
-                fetch('https://projectitm.onrender.com/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ Name, Email, ClassName }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('message').innerText = data.message;
-                })
-                .catch(error => {
-                    console.error('Error submitting form:', error);
-                    document.getElementById('message').innerText = "Submission failed. Please try again later.";
-                });
-            } else {
-                document.getElementById('message').innerText = "You are outside the allowed area. Please return to the classroom.";
-            }
-        }
+    if (document.getElementById('message').innerText === "") {  // Check if there's no error message
+        fetch('https://projectitm.onrender.com/api/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ Name, Email, ClassName, location }), // Include location
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('message').innerText = data.message;
+            window.location.href = "success.html"; // Redirect to success page
+        })
+        .catch(error => {
+            console.error('Error submitting form:', error);
+            document.getElementById('message').innerText = "Submission failed. Please try again later.";
+        });
+    } else {
+        document.getElementById('message').innerText = "You are outside the allowed area. Please return to the classroom.";
+    }
+}
+
 
         // QR Code generation
         // const qr = new QRious({
