@@ -12,5 +12,3 @@ router.post('/submit', (req, res) => {
 });
 
 module.exports=router;
-
-
