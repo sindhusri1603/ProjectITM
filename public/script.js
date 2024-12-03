@@ -1,5 +1,4 @@
 var city = "";
-
 function getLoc() {
     navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -26,18 +25,18 @@ function handleSubmit(event) {
     alert(city);
     event.preventDefault(); // Prevent the form from submitting the default way
 
-    // Collecting data from the form
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const className = document.getElementById('className').value;
+    // // Collecting data from the form
+    const Name = document.getElementById('Name').value;
+    const Email = document.getElementById('Email').value;
+    const ClassName = document.getElementById('ClassName').value;
 
     // Proceed with form submission to server
-    fetch('https://qr-attendance-bz2n.onrender.com/api/submit', {
+    fetch('https://projectitm.onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, className, location: city }), // Sending location as city
+        body: JSON.stringify({ Name, Email, ClassName, location: city }), // Sending location as city
     })
     .then(response => {
         if (!response.ok) {
@@ -54,7 +53,8 @@ function handleSubmit(event) {
         document.getElementById('message').innerHTML = JSON.stringify(error.message); // Display error messages
     });
 }
-
-
 // Event listener for the form submission
 document.getElementById('dataForm').addEventListener('submit', handleSubmit);
+
+
+
