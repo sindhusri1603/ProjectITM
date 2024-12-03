@@ -75,11 +75,11 @@ const classroomCoords = { lat: 53.5603964, lon: -113.4455089 };  // Classroom co
         }
 
         // QR Code generation
-        const qr = new QRious({
-            element: document.getElementById('qrcode'),
-            value: 'http://localhost:5000/qr',
-            size: 256
-        });
+        // const qr = new QRious({
+        //     element: document.getElementById('qrcode'),
+        //     value: 'http://localhost:5000/qr',
+        //     size: 256
+        // });
 
         document.getElementById('dataForm').addEventListener('submit', handleSubmit);
 
