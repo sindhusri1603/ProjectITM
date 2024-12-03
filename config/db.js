@@ -5,3 +5,4 @@ const dbConfig = () => {
     .catch(err => console.error('MongoDB connection error:', err));
 };
 module.exports=dbConfig;
+
