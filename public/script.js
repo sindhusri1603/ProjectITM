@@ -1,7 +1,7 @@
 
 
 const classroomCoords = { lat: 53.5603964, lon: -113.4455089 };  // Classroom coordinates
-        const allowedRadius = 10;  // Allowed radius in meters
+        const allowedRadius = 17;  // Allowed radius in meters
         function getLoc() {
             if (!navigator.geolocation) {
                 document.getElementById('locationDisplay').innerText = "Geolocation is not supported by your browser.";
@@ -21,7 +21,7 @@ const classroomCoords = { lat: 53.5603964, lon: -113.4455089 };  // Classroom co
                         document.getElementById('message').innerText = "";
                     } else {
                         document.getElementById('locationDisplay').innerText = `Location: Outside allowed area (${Math.round(distance)} meters away)`;
-                        document.getElementById('message').innerText = "You must be within the classroom area (10 meters) to mark attendance.";
+                        document.getElementById('message').innerText = "You must be within the classroom area (17 meters) to mark attendance.";
                     }
                 },
                 (error) => {
