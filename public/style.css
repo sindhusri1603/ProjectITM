@@ -2,39 +2,16 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #802dd8, #2e7afd);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    background-color: #a7a7d1;
+    color: #333;
 }
 
-.qr-container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-#qrcode {
-    margin: 20px auto;
-    width: 256px;
-    height: 256px;
-}
-
-h1 {
-    margin-bottom: 15px;
-    font-size: 1.8em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
 /* Container Styling */
 .container {
     width: 90%;
     max-width: 500px;
     margin: 50px auto;
-    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -62,7 +39,7 @@ h1 {
 }
 
 .get-location-btn:hover {
-    background-color: #2d9838;
+    background-color: #0056b3;
 }
 
 /* Form Styling */
@@ -95,7 +72,7 @@ h1 {
 
 /* Submit Button */
 .submit-btn {
-    background-color: #3665dd;
+    background-color: #28a745;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -111,22 +88,4 @@ h1 {
     margin-top: 20px;
     font-size: 1em;
     color: #28a745;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    body {
-        background: linear-gradient(135deg, #6a11cb, #2575fc); /* Adjust gradient for smaller screens */
-    }
-
-    .container {
-        width: 95%; /* Adjust width for smaller screens */
-        margin: 20px auto;
-        padding: 15px;
-    }
-
-    .get-location-btn, .input-field, .dropdown, .submit-btn {
-        font-size: 0.9em; /* Adjust font size for smaller screens */
-        padding: 8px;
-    }
 }
