@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
+    <title>QR Code</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.0/qrious.min.js"></script>
+
 </head>
 <body>
     <div class="qr-container">
-        <h1>Mark Your Attendance</h1>
+        <h1>Scan the QR Code</h1>
+        <!-- Use canvas here for QR code -->
         <canvas id="qrcode"></canvas>
     </div>
+
     <script>
+        // Create a new QR code with QRious
         const qr = new QRious({
-            element: document.getElementById('qrcode'),
-            value: 'https://projectitm.onrender.com', // URL to encode
-            size: 256
+            element: document.getElementById('qrcode'),  // canvas element
+            value: 'https://projectitm.onrender.com',  // URL to encode in the QR code
+            size: 256  // Set size of the QR code (256x256)
         });
     </script>
 </body>
