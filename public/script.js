@@ -1,7 +1,7 @@
 
 
 const classroomCoords = { lat: 53.5603964, lon: -113.4455089 };  // Classroom coordinates
-        const allowedRadius = 15;  // Allowed radius in meters
+        const allowedRadius = 16;  // Allowed radius in meters
         function getLoc() {
             if (!navigator.geolocation) {
                 document.getElementById('locationDisplay').innerText = "Geolocation is not supported by your browser.";
