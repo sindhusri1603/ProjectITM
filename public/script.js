@@ -1,7 +1,7 @@
 
 
-const classroomCoords = { lat: 53.5236, lon: -113.5263 };  // Classroom coordinates
-        const allowedRadius = 75;  // Allowed radius in meters
+const classroomCoords = { lat: 53.631876, lon: -113.589990 };  // Classroom coordinates
+        const allowedRadius = 35;  // Allowed radius in meters
 
         function getLoc() {
             if (!navigator.geolocation) {
@@ -78,7 +78,7 @@ const classroomCoords = { lat: 53.5236, lon: -113.5263 };  // Classroom coordina
         // QR Code generation
         const qr = new QRious({
             element: document.getElementById('qrcode'),
-            value: 'http://localhost:5000/form',
+            value: 'http://localhost:5000/qr',
             size: 256
         });
 
