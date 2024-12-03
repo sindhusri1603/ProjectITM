@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const formSchema = new mongoose.Schema({
     Name: { type: String, required: true },
     Email: { type: String, required: true },
@@ -6,3 +7,5 @@ const formSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+const FormData = mongoose.model('FormData', formSchema);
+module.exports = FormData;
