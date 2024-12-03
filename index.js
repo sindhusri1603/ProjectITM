@@ -24,19 +24,19 @@ mongoose.connect('mongodb+srv://Sindhu:Sindhu1234@cluster0.0pgzm.mongodb.net/att
 // API endpoint to handle form submission
 app.post('/api/submit', async (req, res) => {
     try {
+        console.log("Received payload:", req.body); // Log incoming data
         const formData = new FormData(req.body);
+        console.log("Saving data to MongoDB...");
         await formData.save();
+        console.log("Data saved successfully.");
         res.status(201).json({ message: "Attendance marked successfully!" });
     } catch (error) {
+        console.error("Error occurred:", error); // Log detailed error
         if (error.code === 11000) {
-            // Handle unique index errors
             res.status(400).json({ message: "You have already marked attendance for this class." });
         } else if (error.name === 'ValidationError') {
-            // Handle validation errors
             res.status(400).json({ message: error.message });
         } else {
-            // Handle other errors
-            console.error('Unexpected error:', error);
             res.status(500).json({ message: "An error occurred. Please try again." });
         }
     }
