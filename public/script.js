@@ -54,7 +54,7 @@ const classroomCoords = { lat: 53.560131, lon: -113.446030 };  // Classroom coor
             const ClassName = document.getElementById('className').value;
 
             if (document.getElementById('message').innerText === "") {
-                fetch('http://localhost:5000/api/submit', {
+                fetch('https://projectitm.onrender.com/api/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
