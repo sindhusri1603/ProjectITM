@@ -1,5 +1,3 @@
-
-
 const classroomCoords = { lat: 53.5603759, lon: -113.4456192 };  // Classroom coordinates
         const allowedRadius = 8;  // Allowed radius in meters
         function getLoc() {
@@ -8,8 +6,7 @@ const classroomCoords = { lat: 53.5603759, lon: -113.4456192 };  // Classroom co
                 return;
             }
 
-            document.getElementById('locationDisplay').innerText = "Fetching your location...";
-            
+            document.getElementById('locationDisplay').innerText = "Fetching your location...";          
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const userLat = position.coords.latitude;
@@ -60,12 +57,12 @@ const classroomCoords = { lat: 53.5603759, lon: -113.4456192 };  // Classroom co
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ Name, Email, ClassName, location }), // Include location
+            body: JSON.stringify({ Name, Email, ClassName, location }), 
         })
         .then(response => response.json())
         .then(data => {
             document.getElementById('message').innerText = data.message;
-            window.location.href = "success.html"; // Redirect to success page
+            window.location.href = "success.html"; 
         })
         .catch(error => {
             console.error('Error submitting form:', error);
@@ -75,15 +72,6 @@ const classroomCoords = { lat: 53.5603759, lon: -113.4456192 };  // Classroom co
         document.getElementById('message').innerText = "Submission failed because you are outside the allowed area. Please return to the classroom.";
     }
 }
-
-
-        // QR Code generation
-        // const qr = new QRious({
-        //     element: document.getElementById('qrcode'),
-        //     value: 'http://localhost:5000/qr',
-        //     size: 256
-        // });
-
         document.getElementById('dataForm').addEventListener('submit', handleSubmit);
 
         // Fetch location on page load
