@@ -5,7 +5,16 @@ body {
     background-color: #a7a7d1;
     color: #333;
 }
-
+.qr-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 /* Container Styling */
 .container {
     width: 90%;
