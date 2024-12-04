@@ -11,7 +11,7 @@ const port = 5000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public', 'qr.html')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB connection
 mongoose.connect('mongodb+srv://Sindhu:Sindhu1234@cluster0.0pgzm.mongodb.net/attendanceDB?retryWrites=true&w=majority', {
