@@ -1,6 +1,6 @@
 
 
-const classroomCoords = { lat: 53.5603492, lon: -113.4455129 };  // Classroom coordinates
+const classroomCoords = { lat: 53.5603759, lon: -113.4456192 };  // Classroom coordinates
         const allowedRadius = 8;  // Allowed radius in meters
         function getLoc() {
             if (!navigator.geolocation) {
