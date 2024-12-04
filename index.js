@@ -47,7 +47,9 @@ app.get('/qr', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'qr.html'));
 });
 
-
+app.get('/form', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'form.html'));
+});
 
 // Start the server
 app.listen(port, () => {
