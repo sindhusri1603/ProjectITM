@@ -8,7 +8,16 @@ body {
     align-items: center;
     height: 100vh;
 }
-
+.qr-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 /* Message Container */
 .message-container {
     background: linear-gradient(135deg, #4caf50, #81c784);
