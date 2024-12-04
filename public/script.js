@@ -21,7 +21,7 @@ const classroomCoords = { lat: 53.5603759, lon: -113.4456192 };  // Classroom co
                         document.getElementById('message').innerText = "";
                     } else {
                         document.getElementById('locationDisplay').innerText = `Location: Outside allowed area (${Math.round(distance)} meters away)`;
-                        document.getElementById('message').innerText = "You must be within the classroom area (8 meters) to mark attendance.";
+                        document.getElementById('message').innerText = "You must be in the classroom area to mark attendance.";
                     }
                 },
                 (error) => {
@@ -72,7 +72,7 @@ const classroomCoords = { lat: 53.5603759, lon: -113.4456192 };  // Classroom co
             document.getElementById('message').innerText = "Submission failed. Please try again later.";
         });
     } else {
-        document.getElementById('message').innerText = "You are outside the allowed area. Please return to the classroom.";
+        document.getElementById('message').innerText = "Submission failed because you are outside the allowed area. Please return to the classroom.";
     }
 }
 
